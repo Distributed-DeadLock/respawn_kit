@@ -2,7 +2,7 @@ RESPAWN KIT - a Luanti/Minetest Mod
 
 -- provides a craftable chest, that can be filled with a players personal respawn kit.
 
--- whatever the player puts in the chest, will be duplicated and put into the players main-inventory when he dies.
+-- whatever the player puts in the chest, will be duplicated and put into the players main-inventory when he respawns after dying.
 
 
 -----
