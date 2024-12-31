@@ -1,1 +1,3 @@
-# RESPAWN KIT SETTINGS
+# Use a WhiteList(worldpath/respawn_kit_whitelist.txt) 
+# instead of the default BlackList(worldpath/respawn_kit_blacklist.txt)
+respawn_kit.use_whitelist (Use the WhiteList) bool false
