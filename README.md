@@ -39,3 +39,13 @@ turn-off keep-inventory & keep-armor,
 disable the protection-time of the bone-block,
 don't give cepter of return/resurection_wand on death(make it craftable instead) & 
 don't give any other "respawn-kits".
+
+-----
+License: Code: MIT , Textures: CC0
+Mod dependencies: default
+Credits: 
+based on parts of :
+https://github.com/minefaco/death_cetro by 1faco &
+https://github.com/MeseCraft/void_chest by MeseCraft
+
+Author: DeadLock

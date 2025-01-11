@@ -3,7 +3,7 @@
 -- provides a craftable chest, that can be filled with a players personal respawn kit.
 -- whatever the player puts in the chest, will be duplicated and put into the players main-inventory when he dies.
 
--- based on work by minefaco & MeseCraft
+-- based on work by 1faco & MeseCraft
 
 
 local world_path = core.get_worldpath()
