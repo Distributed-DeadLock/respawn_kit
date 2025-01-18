@@ -18,6 +18,10 @@ WhiteList comes preconfigured with 2 example items.
 
 -----
 
+![The Respawn-Kit Chest](screenshots/Respawn_Chest.png)
+
+-----
+
 
 default recipe for the "respawn_kit:respawn_chest"
 
