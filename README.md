@@ -30,25 +30,29 @@ default recipe for the "respawn_kit:respawn_chest"
 
 ----- 
 
-Intent:
+**Intent**:
+
 This mod is meant as an tool to change the balance of a server towards more Rogue-like experience.
 It's trying to encourage pvp and enganging in dangerous activities without totally negating the need for resource gathering.
  
 I suggest to:
+
 turn-off keep-inventory & keep-armor,
 disable the protection-time of the bone-block,
 don't give cepter of return/resurection_wand on death(make it craftable instead) & 
 don't give any other "respawn-kits".
 
 -----
-License: Code: MIT , Textures: CC0
+**License**: Code: MIT , Textures: CC0
 
-Mod dependencies: default
+**Mod dependencies**: default
 
-Credits: 
+**Credits**: 
 
 based on parts of :
+
 https://github.com/minefaco/death_cetro by 1faco &
+
 https://github.com/MeseCraft/void_chest by MeseCraft
 
-Author: DeadLock
+**Author**: DeadLock
