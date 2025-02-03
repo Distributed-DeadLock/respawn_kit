@@ -10,10 +10,12 @@ local world_path = core.get_worldpath()
 local mod_path = core.get_modpath("respawn_kit")
 local use_whitelist = core.settings:get_bool("respawn_kit.use_whitelist") or false
 
+respawn_kit = {}
+
 -- read whitelist , create it if not existing
 local whitelist_path = world_path .. "/respawn_kit_whitelist.txt"
 local whitelist_file = io.open(whitelist_path, "r")
-local whitelist = {}
+respawn_kit.whitelist = {}
 if (whitelist_file == nil) then
 	local output = io.open(whitelist_path, "w")
 	output:write("default:cobble", "\n")
@@ -23,7 +25,7 @@ else
 	io.close(whitelist_file)
 end
 for line in io.lines(whitelist_path) do
-	table.insert(whitelist, line)
+	table.insert(respawn_kit.whitelist, line)
 end
 
 
@@ -31,7 +33,7 @@ end
 local blacklist_path = world_path .. "/respawn_kit_blacklist.txt"
 local blacklist_template_path = mod_path .. "/respawn_kit_blacklist.txt"
 local blacklist_file = io.open(blacklist_path, "r")
-local blacklist = {}
+respawn_kit.blacklist = {}
 if (blacklist_file == nil) then
 
     local inpfile = assert(io.open(blacklist_template_path, "rb"))
@@ -44,7 +46,7 @@ else
 	io.close(blacklist_file)
 end
 for line in io.lines(blacklist_path) do
-	table.insert(blacklist, line)
+	table.insert(respawn_kit.blacklist, line)
 end
 data = nil
 
@@ -89,14 +91,15 @@ core.register_node("respawn_kit:respawn_chest", {
 	
 
 -- Create a respawn chest inventory when players connect.
-core.register_on_joinplayer(function(player)
+respawn_kit.on_joinplayer = function(player)
 	local inv = player:get_inventory()
 	inv:set_size("respawn_kit:respawn_chest", 8*2)
-end)
+end
+core.register_on_joinplayer(respawn_kit.on_joinplayer)
 
 
 -- Register the "give player stuff from Kit-Inventory on respawn" function
-core.register_on_respawnplayer(function(player) 
+respawn_kit.on_respawnplayer = function(player) 
     local maininv = player:get_inventory()
 	if not maininv:is_empty("respawn_kit:respawn_chest") then		
 		local stack
@@ -107,18 +110,19 @@ core.register_on_respawnplayer(function(player)
 			end
 		end
 	end
-end)
+end
+core.register_on_respawnplayer(respawn_kit.on_respawnplayer)
 
 
 --Register the white/black-list limiting function
-core.register_allow_player_inventory_action(function(player, action, inventory, inventory_info)
+respawn_kit.allow_player_inventory_action = function(player, action, inventory, inventory_info)
 	if (action == "move") then
 		if (inventory_info.to_list == "respawn_kit:respawn_chest") then
 			local stack = inventory:get_stack(inventory_info.from_list, inventory_info.from_index)
 			local moveitem = stack:get_name()
 			if use_whitelist then
 				local found = false
-				for i,line in ipairs(whitelist) do
+				for i,line in ipairs(respawn_kit.whitelist) do
 					if (line == moveitem) then
 						found = true
 					end
@@ -127,7 +131,7 @@ core.register_allow_player_inventory_action(function(player, action, inventory, 
 					return 0
 				end
 			else
-				for i,line in ipairs(blacklist) do
+				for i,line in ipairs(respawn_kit.blacklist) do
 					if (line == moveitem) then
 						return 0
 					end
@@ -135,4 +139,5 @@ core.register_allow_player_inventory_action(function(player, action, inventory, 
 			end
 		end
 	end
-end)
+end
+core.register_allow_player_inventory_action(respawn_kit.allow_player_inventory_action)
