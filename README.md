@@ -51,9 +51,9 @@ don't give any other "respawn-kits".
 
 **Mod dependencies**: default
 
-**Credits**: 
+**Thanks**: 
 
-based on parts of :
+My Knowledge about how to expand the player-inventory & how to do smth on player_death is based on parts of :
 
 https://github.com/minefaco/death_cetro by 1faco &
 
